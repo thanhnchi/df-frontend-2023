@@ -4,11 +4,191 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Bookstore</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
-    Hello world
+    <header class="header">
+      <div class="header-wrapper">
+        <h4 class="logo">Bookstore</h4>
+        <div class="user">
+          <button class="button user-avatar">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <p class="user-name">John Doe</p>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main-wrapper">
+        <div class="table">
+          <div class="table-header">
+            <div class="table-filter">
+              <input
+                type="text"
+                id="search__input"
+                class="filter-search"
+                placeholder="Search books"
+              />
+              <button
+                class="button button--primary"
+                id="button__add"
+                onclick="showModal('#modal__add')"
+              >
+                Add book
+              </button>
+            </div>
+          </div>
+          <div class="table-body">
+            <table>
+              <thead>
+                <tr>
+                  <td>Name</td>
+                  <td>Author</td>
+                  <td>Topic</td>
+                  <td>Action</td>
+                </tr>
+              </thead>
+              <tbody id="table__body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="modal" id="modal__add">
+      <div class="overlay"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title">Add book</p>
+            <button
+              class="button modal-close"
+              onclick="hideModal('#modal__add')"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="form__add">
+              <div class="form-group">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  name="name"
+                  id="name"
+                  class="form-control"
+                  placeholder="Enter book name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="author" class="form-label">Author</label>
+                <input
+                  name="author"
+                  id="author"
+                  class="form-control"
+                  placeholder="Enter book name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="topic" class="form-label">Topic</label>
+                <select
+                  name="topic"
+                  id="topic"
+                  class="form-select"
+                  placeholder="Enter book name"
+                >
+                  <option value="Programming">Programming</option>
+                  <option value="	Database">Database</option>
+                  <option value="DevOps">DevOps</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              class="button button--primary"
+              id="button__submit"
+              form="form__add"
+              type="submit"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modal__delete">
+      <div class="overlay"></div>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title">Delete book</p>
+            <button
+              class="button modal-close"
+              onclick="hideModal('#modal__delete')"
+            >
+              &times;
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class="confirm-message">
+              Do you want to delete <br />
+              <span class="confirm-message--highlight">Refactoring</span> book?
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button class="button button--primary" id="button__confirm__delete">
+              Delete
+            </button>
+            <button class="button" onclick="hideModal('#modal__delete')">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message">
+      <div class="message-wrapper">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 12.75l6 6 9-13.5"
+          />
+        </svg>
+
+        <p class="message-content" id="message__content">
+          Thêm dữ liêu thành công
+        </p>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
